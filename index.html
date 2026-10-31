@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pizno — Назар Панкратов</title>
+<meta name="description" content="Сайти, застосунки й Telegram-боти для запису. Портфоліо Назара Панкратова, студія pizno.">
+<meta name="theme-color" content="#0f3d4b">
+<meta property="og:title" content="pizno — портфоліо Назара Панкратова">
+<meta property="og:description" content="Сайти, застосунки й Telegram-боти для запису для бізнесу в Україні та Польщі.">
+<meta property="og:image" content="img/og.png">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;600;700&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="squig" viewBox="0 0 100 60"><path d="M5 34 C 18 4, 30 64, 46 32 S 74 2, 95 28" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></symbol>
+</svg>
+
+<div class="loader" aria-hidden="true">
+  <span class="loader__word">pizno<span class="script">.</span></span>
+</div>
+
+<header class="top">
+  <a class="logo" href="#top" aria-label="pizno — на початок">pizno<i>.</i></a>
+  <nav aria-label="Категорії">
+    <a class="link-line" href="#sites"><b>01</b><span data-en="Websites">Сайти</span></a>
+    <a class="link-line" href="#apps"><b>02</b><span data-en="Apps">Застосунки</span></a>
+    <a class="link-line" href="#bots"><b>03</b><span data-en="Telegram bots">Telegram-боти</span></a>
+    <a class="link-line" href="#contact"><b>04</b><span data-en="Contact">Контакти</span></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Мова / Language">
+    <button type="button" data-lang="uk" aria-pressed="true">UA</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO — ref 1: big split word with a figure in the middle -->
+  <div class="hero-track">
+  <section class="slide hero" aria-label="Портфоліо">
+    <svg class="squig squig--a" aria-hidden="true"><use href="#squig"/></svg>
+    <svg class="squig squig--b" aria-hidden="true"><use href="#squig"/></svg>
+    <div class="hero__stage">
+      <div class="hero__half hero__half--l">
+        <span class="mask hero__word"><span data-en="Port">Порт</span></span>
+        <small class="reveal" data-en="Websites · Apps">Сайти · Застосунки</small>
+      </div>
+      <figure class="hero__figure avatar reveal" data-pose="idle">
+        <button type="button" class="avatar__hit" aria-label="Помахати / Wave"></button>
+        <div class="avatar__squash"><div class="avatar__body">
+          <img class="avatar__f" data-p="idle" src="img/hero-idle.webp" alt="Назар — 3D-аватар у повний зріст" width="640" height="1080" fetchpriority="high">
+          <img class="avatar__f" data-p="duck" src="img/hero-duck.webp" alt="" width="640" height="1080" fetchpriority="low">
+          <img class="avatar__f" data-p="lie" src="img/hero-lie.webp" alt="" width="640" height="1080" fetchpriority="low">
+        </div></div>
+        <span class="avatar__hi script" aria-hidden="true" data-en="hi!">привіт!</span>
+        <span class="hero__note script" aria-hidden="true" data-en="scroll ↓">гортай ↓</span>
+      </figure>
+      <div class="hero__half hero__half--r">
+        <span class="mask hero__word"><span data-en="folio">фоліо</span></span>
+        <small class="reveal" data-en="Telegram bots">Telegram-боти</small>
+      </div>
+    </div>
+    <div class="hero__foot">
+      <div class="hero__who reveal"><b data-en="Nazar Pankratov">Назар Панкратов</b><span class="script" data-en="pizno studio">студія pizno</span></div>
+      <a class="btn btn--accent reveal" href="https://t.me/Pa9krat" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg><span data-en="Message on Telegram">Написати в Telegram</span></a>
+    </div>
+  </section>
+  </div>
+
+  <!-- INTRO -->
+  <section class="slide wrap" id="about" aria-labelledby="about-title">
+    <div class="intro">
+      <div class="intro__card reveal">
+        <div class="intro__mark face" data-face="idle">
+          <img class="face__f" data-f="idle" src="img/face-idle.webp" alt="Назар — анімований 3D-портрет" width="640" height="778" loading="lazy">
+          <img class="face__f" data-f="smile" src="img/face-smile.webp" alt="" width="640" height="778" loading="lazy">
+          <img class="face__f" data-f="wave" src="img/face-wave.webp" alt="" width="640" height="778" loading="lazy">
+          <span class="script face__tag" data-en="hover me">наведи на мене</span>
+        </div>
+      </div>
+      <div class="intro__body">
+        <h2 class="intro__title" id="about-title"><span class="mask"><span data-en="Hi, I'm Nazar">Привіт, я Назар</span></span><span class="script reveal" data-en="websites · apps · bots">сайти · застосунки · боти</span></h2>
+        <div class="intro__text reveal">
+          <p data-en="pizno is my studio. I build websites, loyalty apps and Telegram bots for small businesses — cafés, shops, beauty salons, bathhouses and logistics in Ukraine and Poland.">pizno — моя студія. Роблю сайти, застосунки лояльності й Telegram-боти для малого бізнесу — кав'ярень, магазинів, салонів краси, лазень і логістики в Україні та Польщі.</p>
+          <p data-en="Every project starts with one question: where does the business lose customers? A queue, a message answered too late, a request nobody handled. That is exactly what I fix.">Кожен проєкт починається з одного питання: де бізнес втрачає клієнтів? Черга, повідомлення без відповіді, заявка, яку ніхто не обробив. Саме це я й виправляю.</p>
+        </div>
+        <div class="intro__grid reveal">
+          <div>
+            <span class="eyebrow" data-en="What I do">Що роблю</span>
+            <ul>
+              <li data-en="Websites &amp; landing pages">Сайти й лендинги</li>
+              <li data-en="Loyalty &amp; pre-order apps">Застосунки лояльності й передзамовлень</li>
+              <li data-en="Telegram booking bots">Telegram-боти для запису</li>
+              <li data-en="Requests straight to Telegram">Заявки одразу в Telegram</li>
+            </ul>
+          </div>
+          <div>
+            <span class="eyebrow" data-en="Tools">Інструменти</span>
+            <div class="chips"><span>Next.js</span><span>React</span><span>Node.js</span><span>Supabase</span><span>n8n</span><span>Telegram API</span><span>Vercel</span><span>Claude AI</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENTS = category menu -->
+  <section class="slide contents wrap" aria-labelledby="contents-title">
+    <h2 class="contents__title" id="contents-title"><span class="mask"><span data-en="Contents">Зміст</span></span></h2>
+    <nav class="contents__list reveal" aria-label="Категорії робіт">
+      <a href="#sites"><b>01</b><span data-en="Websites">Сайти</span><small data-en="3 projects">3 проєкти</small></a>
+      <a href="#apps"><b>02</b><span data-en="Apps">Застосунки</span><small data-en="3 projects">3 проєкти</small></a>
+      <a href="#bots"><b>03</b><span data-en="Booking bots">Боти для запису</span><small data-en="2 projects">2 проєкти</small></a>
+      <a href="#contact"><b>04</b><span data-en="Contact">Контакти</span><small>@Pa9krat</small></a>
+    </nav>
+  </section>
+
+  <!-- 01 SITES -->
+  <section class="slide cat wrap" id="sites" aria-labelledby="sites-title">
+    <svg class="squig" style="top:12%;right:6%;transform:rotate(12deg)" aria-hidden="true"><use href="#squig"/></svg>
+    <div class="cat__head">
+      <span class="cat__num">01</span>
+      <h2 class="cat__title" id="sites-title"><span class="mask"><span data-en="Websites">Сайти</span></span><span class="script reveal" data-en="that sell">що продають</span></h2>
+      <p class="cat__lead reveal" data-en="Each one has a single job: turn a visitor into a call, an order or a request in Telegram.">У кожного одне завдання: перетворити відвідувача на дзвінок, замовлення чи заявку в Telegram.</p>
+    </div>
+
+    <div class="work">
+      <article class="proj">
+        <div class="proj__media reveal">
+          <div class="combo">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/agro.webp" alt="Kyiv Olymp Agro — головний екран сайту" width="1600" height="1000" loading="lazy"></div>
+            <div class="phone"><div class="phone__screen"><img src="img/agro-m.webp" alt="" width="640" height="1385" loading="lazy"></div></div>
+          </div>
+        </div>
+        <div class="proj__info reveal">
+          <span class="proj__tag proj__tag--live">Live</span>
+          <h3 class="proj__name">Kyiv Olymp Agro</h3>
+          <p class="proj__client" data-en="grain buyer · Ukraine">закупівля зерна · Україна</p>
+          <p class="proj__desc" data-en="Daily purchase prices for wheat, corn, sunflower and rapeseed, a cost calculator and a request that goes straight to Telegram or a call.">Щоденні закупівельні ціни на пшеницю, кукурудзу, соняшник і ріпак, калькулятор вартості та заявка, що одразу йде в Telegram або на дзвінок.</p>
+          <div class="proj__stack"><span>React</span><span>Tailwind</span><span data-en="Calculator">Калькулятор</span></div>
+          <div class="proj__links"><a class="btn" href="https://golden-harvest-aid.vercel.app" target="_blank" rel="noopener"><span data-en="Open site">Відкрити сайт</span> ↗</a></div>
+        </div>
+      </article>
+
+      <article class="proj proj--flip">
+        <div class="proj__media reveal">
+          <div class="combo">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/odessa.webp" alt="Shawarma from Odessa — меню зі скрол-анімацією" width="1600" height="1000" loading="lazy"></div>
+            <div class="phone"><div class="phone__screen"><img src="img/odessa-m.webp" alt="" width="640" height="1385" loading="lazy"></div></div>
+          </div>
+        </div>
+        <div class="proj__info reveal">
+          <span class="proj__tag proj__tag--live">Live</span>
+          <h3 class="proj__name">Shawarma from Odessa</h3>
+          <p class="proj__client" data-en="shawarma bar · Poznań">шаурмична · Познань</p>
+          <p class="proj__desc" data-en="A menu landing with scroll animation: dishes change as you scroll, with ingredients and price, and “Order” leads straight to delivery. Polish and Ukrainian.">Лендинг-меню зі скрол-анімацією: страви змінюються, поки гортаєш, — зі складом і ціною, а «Замовити» веде одразу в доставку. Польською та українською.</p>
+          <div class="proj__stack"><span data-en="Scroll animation">Скрол-анімація</span><span>PL / UA</span></div>
+          <div class="proj__links"><a class="btn" href="https://odessa-opaq.vercel.app" target="_blank" rel="noopener"><span data-en="Open site">Відкрити сайт</span> ↗</a></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj__media reveal">
+          <div class="combo">
+            <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/arden.webp" alt="ARDEN — сайт будівельної компанії" width="1600" height="1000" loading="lazy"></div>
+            <div class="phone"><div class="phone__screen"><img src="img/arden-m.webp" alt="" width="640" height="1385" loading="lazy"></div></div>
+          </div>
+        </div>
+        <div class="proj__info reveal">
+          <span class="proj__tag" data-en="Ready to launch">Готовий до запуску</span>
+          <h3 class="proj__name">ARDEN</h3>
+          <p class="proj__client" data-en="private home construction">будівництво приватних будинків</p>
+          <p class="proj__desc" data-en="A premium landing for a construction company: house cost calculator, and every request lands in the owner's Telegram automatically.">Преміальний лендинг для будівельної компанії: калькулятор вартості будинку, а кожна заявка автоматично прилітає в Telegram власника.</p>
+          <div class="proj__stack"><span data-en="Calculator">Калькулятор</span><span data-en="Requests → Telegram">Заявки → Telegram</span><span>RU / EN</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 02 APPS -->
+  <section class="slide cat wrap" id="apps" aria-labelledby="apps-title">
+    <svg class="squig" style="top:10%;left:46%;transform:rotate(-14deg)" aria-hidden="true"><use href="#squig"/></svg>
+    <div class="cat__head">
+      <span class="cat__num">02</span>
+      <h2 class="cat__title" id="apps-title"><span class="mask"><span data-en="Apps">Застосунки</span></span><span class="script reveal" data-en="right on the phone">прямо в телефоні</span></h2>
+      <p class="cat__lead reveal" data-en="Installed from a link, no App Store queue. Customers come back for points, coupons and pre-orders.">Встановлюються з посилання, без черги в App Store. Клієнти повертаються за балами, купонами й передзамовленнями.</p>
+    </div>
+
+    <div class="apps">
+      <article class="app reveal">
+        <div class="app__phones app__phones--pair">
+          <div class="phone"><div class="phone__screen"><img src="img/shauman.webp" alt="SHAUMAN — застосунок для гостей" width="640" height="1385" loading="lazy"></div></div>
+          <div class="phone"><div class="phone__screen"><img src="img/shaadmin.webp" alt="SHAUMAN — застосунок для персоналу" width="640" height="1385" loading="lazy"></div></div>
+        </div>
+        <span class="proj__tag proj__tag--live" data-en="Live demo">Живе демо</span>
+        <h3 class="proj__name">SHAUMAN</h3>
+        <p class="proj__client" data-en="shawarma chain · Poland">мережа шаурмичних · Польща</p>
+        <p class="proj__desc" data-en="Guests order ahead and collect points; the staff app shows orders in real time and sends a push when it's ready.">Гість замовляє наперед і збирає бали, а застосунок для персоналу показує замовлення в реальному часі й надсилає пуш, коли все готово.</p>
+        <div class="proj__stack"><span>PWA</span><span>Supabase</span><span data-en="2 apps">2 застосунки</span></div>
+        <div class="proj__links">
+          <a class="btn" href="https://shawuha.vercel.app" target="_blank" rel="noopener"><span data-en="Guests">Гості</span> ↗</a>
+          <a class="btn" href="https://shaadmin.vercel.app" target="_blank" rel="noopener"><span data-en="Staff">Персонал</span> ↗</a>
+        </div>
+      </article>
+
+      <article class="app reveal">
+        <div class="app__phones">
+          <div class="phone"><div class="phone__screen"><img src="img/slow.webp" alt="Słowianoczka — вітальний екран" width="640" height="1385" loading="lazy"></div></div>
+        </div>
+        <span class="proj__tag proj__tag--live" data-en="Live demo">Живе демо</span>
+        <h3 class="proj__name">Słowianoczka</h3>
+        <p class="proj__client" data-en="grocery chain · Poland">мережа продуктових · Польща</p>
+        <p class="proj__desc" data-en="Loyalty like Żabka and Biedronka: coupons, rewards, store map, cart and ordering inside the app. Polish and Ukrainian.">Лояльність як у Żabka і Biedronka: купони, нагороди, мапа магазинів, кошик і замовлення всередині застосунку. Польською та українською.</p>
+        <div class="proj__stack"><span>PWA</span><span data-en="Map">Мапа</span><span>PL / UA</span></div>
+        <div class="proj__links"><a class="btn" href="https://slowianoczka.vercel.app" target="_blank" rel="noopener"><span data-en="Open">Відкрити</span> ↗</a></div>
+      </article>
+
+      <article class="app reveal">
+        <div class="app__phones">
+          <div class="phone"><div class="phone__screen"><img src="img/padel.webp" alt="«Четвертий» — головний екран" width="640" height="1385" loading="lazy"></div></div>
+        </div>
+        <span class="proj__tag" data-en="Prototype">Прототип</span>
+        <h3 class="proj__name" data-en="“Chetvertyi”">«Четвертий»</h3>
+        <p class="proj__client" data-en="padel partner finder · Kyiv">пошук партнерів для паделу · Київ</p>
+        <p class="proj__desc" data-en="When a match is one player short: court rental, open matches, tournaments, training and player levels.">Коли на матч бракує четвертого: оренда кортів, відкриті матчі, турніри, тренування й рівні гравців.</p>
+        <div class="proj__stack"><span>UI / UX</span><span data-en="Court booking">Бронювання кортів</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 BOTS -->
+  <section class="slide cat wrap" id="bots" aria-labelledby="bots-title">
+    <svg class="squig" style="bottom:8%;left:5%;transform:rotate(-10deg)" aria-hidden="true"><use href="#squig"/></svg>
+    <div class="cat__head">
+      <span class="cat__num">03</span>
+      <h2 class="cat__title" id="bots-title"><span class="mask"><span data-en="Bots">Боти</span></span><span class="script reveal" data-en="for bookings in Telegram">для запису в Telegram</span></h2>
+      <p class="cat__lead reveal" data-en="The client books at 23:47 — and gets an answer in 3 seconds. The owner just confirms.">Клієнт записується о 23:47 — і отримує відповідь за 3 секунди. Власнику лишається тільки підтвердити.</p>
+    </div>
+
+    <div class="bots">
+      <article class="bot reveal">
+        <div class="phone"><div class="phone__screen">
+          <div class="tg" aria-label="Приклад діалогу з ботом запису до майстра">
+            <div class="tg__head"><span class="tg__ava">І</span><div><b data-en="Iryna · nails">Ірина · манікюр</b><small>bot</small></div></div>
+            <div class="tg__body">
+              <div class="tg__m" data-en="Hi! You're booking with Iryna. Pick a service:">Вітаю! Ви записуєтесь до майстрині Ірини. Оберіть послугу:</div>
+              <div class="tg__kb"><span class="on" data-en="Gel · 1.5 h">Покриття · 1,5 год</span><span data-en="Pedicure">Педикюр</span></div>
+              <div class="tg__m" data-en="Free on Thursday:">Вільно в четвер:</div>
+              <div class="tg__kb"><span>10:00</span><span class="on">12:30</span><span>16:00</span></div>
+              <div class="tg__m tg__m--me" data-en="12:30 works">12:30 підходить</div>
+              <div class="tg__m" data-en="Done: Thu 12:30. I'll remind you the day before.">Готово: чт 12:30. Нагадаю напередодні.</div>
+            </div>
+          </div>
+        </div></div>
+        <div>
+          <span class="proj__tag" data-en="Ready product">Готовий продукт</span>
+          <h3 class="proj__name" data-en="Booking bot">Бот запису до майстра</h3>
+          <p class="proj__client" data-en="nails · beauty · Ukraine">манікюр · б'юті · Україна</p>
+          <p class="proj__desc" data-en="Each master gets a personal link — clients book only with them, and the bot sends reminders itself. The paper schedule moves in with one photo.">Кожен майстер отримує власне посилання — клієнти записуються лише до нього, а нагадування бот надсилає сам. Паперовий розклад переноситься одним фото.</p>
+          <div class="proj__stack"><span>Telegram</span><span>n8n</span><span data-en="Photo recognition">Розпізнавання фото</span></div>
+        </div>
+      </article>
+
+      <article class="bot reveal">
+        <div class="phone"><div class="phone__screen">
+          <div class="tg" aria-label="Приклад діалогу з ботом лазні">
+            <div class="tg__head"><span class="tg__ava">Л</span><div><b data-en="Bathhouse · booking">Лазня · бронювання</b><small>bot</small></div></div>
+            <div class="tg__body">
+              <div class="tg__m tg__m--me" data-en="Saturday evening, four of us, 3 hours">у суботу ввечері вчотирьох, 3 години</div>
+              <div class="tg__m" data-en="Free start on Sat, 3 h:">Вільний початок у сб, 3 год:</div>
+              <div class="tg__kb"><span>17:00</span><span class="on">19:00</span><span>20:00</span></div>
+              <div class="tg__m" data-en="How should we address you?">Як до вас звертатися?</div>
+              <span class="tg__sys" data-en="request sent to admins">заявку надіслано адмінам</span>
+              <div class="tg__kb"><span class="on" data-en="Confirm">Підтвердити</span><span data-en="Decline">Відхилити</span></div>
+            </div>
+          </div>
+        </div></div>
+        <div>
+          <span class="proj__tag" data-en="Ready product">Готовий продукт</span>
+          <h3 class="proj__name" data-en="Bathhouse admin">Банний адміністратор</h3>
+          <p class="proj__client" data-en="bathhouses · holiday cottages">лазні · бази відпочинку</p>
+          <p class="proj__desc" data-en="Answers guests 24/7, shows free time, counts the price and collects the booking — the admin only presses “Confirm”. One engine for any number of venues.">Відповідає гостям 24/7, показує вільний час, рахує вартість і збирає заявку — адміністратор лише тисне «Підтвердити». Один рушій на скільки завгодно закладів.</p>
+          <div class="proj__stack"><span>Telegram</span><span>Node.js</span><span>Claude AI</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- THANK YOU / CONTACT — ref 2 -->
+  <section class="slide thanks" id="contact" aria-labelledby="thanks-title">
+    <svg class="squig" style="top:16%;left:10%;transform:rotate(-18deg)" aria-hidden="true"><use href="#squig"/></svg>
+    <svg class="squig" style="top:30%;right:9%;transform:rotate(20deg)" aria-hidden="true"><use href="#squig"/></svg>
+    <div class="wrap">
+      <h2 class="thanks__big" id="thanks-title"><span class="mask"><span data-en="Thank you">Дякую</span></span><span class="script reveal" data-en="for your attention">за увагу</span></h2>
+      <p class="thanks__sub reveal" data-en="Tell me about your business — I'll show you where you're losing customers and what can be automated.">Розкажіть про свій бізнес — покажу, де ви втрачаєте клієнтів і що можна автоматизувати.</p>
+      <div class="thanks__cta reveal">
+        <a class="btn btn--accent" href="https://t.me/Pa9krat" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg><span data-en="Message on Telegram">Написати в Telegram</span></a>
+        <a class="btn" href="tel:+380962412274"><svg aria-hidden="true"><use href="#i-phone"/></svg><span data-en="Call">Подзвонити</span></a>
+      </div>
+    </div>
+    <div class="thanks__paper">
+      <div class="contacts">
+        <a class="link-line" href="tel:+380962412274"><svg aria-hidden="true"><use href="#i-phone"/></svg>+380 96 241 22 74</a>
+        <a class="link-line" href="https://t.me/Pa9krat" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>@Pa9krat</a>
+      </div>
+      <div class="foot">
+        <span>© 2026 pizno · <span data-en="Nazar Pankratov">Назар Панкратов</span></span>
+        <a class="link-line" href="#top" data-en="Back to top ↑">Нагору ↑</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="main.js" defer></script>
+</body>
+</html>
