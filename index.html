@@ -23,6 +23,9 @@
   <symbol id="squig" viewBox="0 0 100 60"><path d="M5 34 C 18 4, 30 64, 46 32 S 74 2, 95 28" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3Z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 5h18v12H3zM8 21h8M12 17v4"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 6h16v10H9l-5 4z"/><circle cx="9.5" cy="11" r="1.2" fill="currentColor"/><circle cx="14.5" cy="11" r="1.2" fill="currentColor"/></symbol>
 </svg>
 
 <div class="loader" aria-hidden="true">
@@ -76,6 +79,11 @@
     </div>
   </section>
   </div>
+
+  <div class="tape" aria-hidden="true"><div class="tape__run">
+    <span data-en="Websites">Сайти</span><i>✦</i><span data-en="Apps">Застосунки</span><i>✦</i><span data-en="Telegram bots">Telegram-боти</span><i>✦</i><span data-en="Requests to Telegram">Заявки в Telegram</span><i>✦</i>
+    <span data-en="Websites">Сайти</span><i>✦</i><span data-en="Apps">Застосунки</span><i>✦</i><span data-en="Telegram bots">Telegram-боти</span><i>✦</i><span data-en="Requests to Telegram">Заявки в Telegram</span><i>✦</i>
+  </div></div>
 
   <!-- INTRO -->
   <section class="slide wrap" id="about" aria-labelledby="about-title">
@@ -133,7 +141,7 @@
       <p class="cat__lead reveal" data-en="Each one has a single job: turn a visitor into a call, an order or a request in Telegram.">У кожного одне завдання: перетворити відвідувача на дзвінок, замовлення чи заявку в Telegram.</p>
     </div>
 
-    <div class="work">
+    <div class="work swipe" data-swipe>
       <article class="proj">
         <div class="proj__media reveal">
           <div class="combo">
@@ -195,7 +203,7 @@
       <p class="cat__lead reveal" data-en="Installed from a link, no App Store queue. Customers come back for points, coupons and pre-orders.">Встановлюються з посилання, без черги в App Store. Клієнти повертаються за балами, купонами й передзамовленнями.</p>
     </div>
 
-    <div class="apps">
+    <div class="apps swipe" data-swipe>
       <article class="app reveal">
         <div class="app__phones app__phones--pair">
           <div class="phone"><div class="phone__screen"><img src="img/shauman.webp" alt="SHAUMAN — застосунок для гостей" width="640" height="1385" loading="lazy"></div></div>
@@ -246,7 +254,7 @@
       <p class="cat__lead reveal" data-en="The client books at 23:47 — and gets an answer in 3 seconds. The owner just confirms.">Клієнт записується о 23:47 — і отримує відповідь за 3 секунди. Власнику лишається тільки підтвердити.</p>
     </div>
 
-    <div class="bots">
+    <div class="bots swipe" data-swipe>
       <article class="bot reveal">
         <div class="phone"><div class="phone__screen">
           <div class="tg" aria-label="Приклад діалогу з ботом запису до майстра">
@@ -320,6 +328,14 @@
   </section>
 
 </main>
+
+<nav class="tabbar" aria-label="Категорії">
+  <a href="#sites" data-tab="sites"><svg aria-hidden="true"><use href="#i-web"/></svg><span data-en="Sites">Сайти</span></a>
+  <a href="#apps" data-tab="apps"><svg aria-hidden="true"><use href="#i-app"/></svg><span data-en="Apps">Застосунки</span></a>
+  <a href="#bots" data-tab="bots"><svg aria-hidden="true"><use href="#i-bot"/></svg><span data-en="Bots">Боти</span></a>
+  <a href="https://t.me/Pa9krat" target="_blank" rel="noopener" class="tabbar__cta"><svg aria-hidden="true"><use href="#i-tg"/></svg><span data-en="Write">Написати</span></a>
+</nav>
+
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="main.js" defer></script>

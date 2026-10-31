@@ -179,6 +179,42 @@
     }, 5200);
   }
 
+  /* ---------- mobile: swipe carousels get dots + a "swipe" hint ---------- */
+  document.querySelectorAll('[data-swipe]').forEach((rail) => {
+    const items = [...rail.children];
+    const ui = document.createElement('div');
+    ui.className = 'swipe__ui';
+    ui.innerHTML = `<div class="swipe__dots">${items.map(() => '<i></i>').join('')}</div><span class="swipe__hint script" data-en="swipe →">гортай →</span>`;
+    rail.after(ui);
+    const hint = ui.querySelector('.swipe__hint');
+    hint.dataset.uk = hint.innerHTML;
+    i18nNodes.push(hint);
+    if (root.lang === 'en') hint.innerHTML = hint.dataset.en;
+    const dots = [...ui.querySelectorAll('i')];
+    const sync = () => {
+      const w = items[0].getBoundingClientRect().width + 14;
+      const i = Math.min(items.length - 1, Math.round(rail.scrollLeft / w));
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      ui.classList.toggle('is-end', i === items.length - 1);
+    };
+    rail.addEventListener('scroll', sync, { passive: true });
+    sync();
+  });
+
+  /* ---------- mobile: floating tab bar follows the section in view ---------- */
+  const tabbar = document.querySelector('.tabbar');
+  const tabs = [...tabbar.querySelectorAll('[data-tab]')];
+  const sections = tabs.map((t) => document.getElementById(t.dataset.tab));
+  function syncTabs() {
+    tabbar.classList.toggle('is-on', scrollY > track.offsetHeight - innerHeight * 0.4);
+    const mid = innerHeight * 0.45;
+    let active = null;
+    sections.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top < mid && r.bottom > mid) active = tabs[i]; });
+    tabs.forEach((t) => t.classList.toggle('is-active', t === active));
+  }
+  addEventListener('scroll', syncTabs, { passive: true });
+  syncTabs();
+
   /* ---------- smooth scroll (desktop, motion allowed) ---------- */
   function startLenis() {
     if (reduced || !window.Lenis || matchMedia('(hover: none)').matches) return;
