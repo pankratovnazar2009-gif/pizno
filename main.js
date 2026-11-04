@@ -1,4 +1,4 @@
-// pizno — portfolio interactions. Plain JS, no build step.
+// pizno: portfolio interactions. Plain JS, no build step.
 (() => {
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,8 +11,8 @@
   const i18nNodes = [...document.querySelectorAll('[data-en]')];
   i18nNodes.forEach((n) => { n.dataset.uk = n.innerHTML; });
   const META = {
-    uk: { title: 'pizno — Назар Панкратов', desc: 'Сайти, застосунки й Telegram-боти для запису. Портфоліо Назара Панкратова, студія pizno.' },
-    en: { title: 'pizno — Nazar Pankratov', desc: 'Websites, apps and Telegram booking bots. Portfolio of Nazar Pankratov, pizno studio.' },
+    uk: { title: 'pizno: сайти, застосунки та ШІ-автоматизації для малого бізнесу', desc: "Сайти, застосунки лояльності, Telegram-боти та ШІ-асистенти для кав'ярень, магазинів, салонів і сервісів в Україні та Польщі. Безкоштовний аудит." },
+    en: { title: 'pizno: websites, apps and AI automation for small businesses', desc: 'Websites, loyalty apps, Telegram bots and AI assistants for cafés, shops, salons and service businesses in Ukraine and Poland. Free audit.' },
   };
   function setLang(lang) {
     const l = lang === 'en' ? 'en' : 'uk';

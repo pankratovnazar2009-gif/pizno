@@ -647,3 +647,74 @@ body::after {
   .cat__num { top: -40px; right: 4px; width: 58px; height: 58px; font-size: 1.4rem; }
 }
 .intro__mark .face__tag { font-family: var(--font-script); }
+
+/* ================= OFFER UPDATE: new blocks built from existing pieces ================= */
+/* hero headline takes the place (and the look) of the old name line */
+.hero__h1 { margin: 0; font: 500 1.375rem/1 var(--font-display); letter-spacing: 0.04em; text-transform: uppercase; }
+.hero__sub { flex-basis: 100%; margin: 2px 0 0; font-size: 0.9375rem; color: var(--cream-muted); }
+
+/* contents: five tiles now */
+.contents__list { grid-template-columns: repeat(5, 1fr); max-width: 1320px; }
+
+/* 04 AI & automation: hairline grid like the contents tiles */
+.ai { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.ai__card { padding: clamp(28px, 3.5vw, 48px) clamp(20px, 3vw, 44px) clamp(32px, 4vw, 56px) 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+.ai__card:nth-child(even) { padding-left: clamp(20px, 3vw, 44px); padding-right: 0; border-left: 1px solid var(--line); }
+.ai .proj__name { font-size: clamp(2rem, 3vw, 3rem); }
+.ai .proj__desc { max-width: 46ch; }
+.ai__proof { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin: 0 0 20px; }
+.ai__proof a { font-weight: 600; color: var(--accent); }
+
+/* drafts kept in <template> until real values exist */
+.steps > div { padding: 28px 16px 8px; display: grid; gap: 10px; justify-items: center; }
+.steps > div + div { border-left: 1px solid var(--line); }
+.steps b { font: 400 clamp(3rem, 6vw, 5.6rem)/0.85 var(--font-display); }
+.steps span { font: 600 0.75rem/1.3 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-muted); }
+.steps small { font-size: 0.875rem; color: var(--cream-muted); max-width: 26ch; }
+.prices { list-style: none; margin: 0 0 24px; padding: 0; border-top: 1px solid var(--line); }
+.prices li { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.prices b { font: 400 clamp(1.6rem, 3vw, 2.6rem)/1 var(--font-display); white-space: nowrap; }
+
+@media (max-width: 1100px) {
+  .top nav { gap: 18px; }
+  .top nav a { letter-spacing: 0.1em; }
+}
+@media (max-width: 900px) {
+  .contents__list { grid-template-columns: repeat(3, 1fr); }
+  .contents__list a:nth-child(4) { border-left: 0; }
+  .contents__list a:nth-child(n+4) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .hero__h1 { font-size: 1.125rem; }
+  .hero__sub { font-size: 0.8125rem; }
+  .contents__list { grid-template-columns: 1fr 1fr; }
+  .contents__list a:last-child { grid-column: 1 / -1; }
+  .ai { border-top: 0; }
+  .ai__card, .ai__card:nth-child(even) { border: 0; padding: 16px 16px 20px; }
+  .tabbar { grid-template-columns: repeat(5, 1fr); }
+  .tabbar a { font-size: 0.5625rem; letter-spacing: 0.02em; }
+  .steps > div + div { border-left: 0; }
+}
+@media (max-width: 760px) {
+  .contents__list a:nth-child(n+4) { border-top: 0; }
+}
+/* the headline row is one line taller than the old name row: give it room above the avatar's shoes */
+@media (min-width: 761px) {
+  .avatar { height: min(calc(100svh - 222px), 860px); }
+  .hero__foot { position: relative; z-index: 3; }
+  .top nav a { white-space: nowrap; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .top { gap: 16px; }
+  .top nav { gap: 14px; }
+  .top nav a b { display: none; }
+}
+/* short phones (iPhone SE class): the headline row needs the space the avatar had */
+@media (max-width: 760px) and (max-height: 760px) {
+  .avatar { height: min(31svh, 300px); }
+  .hero__who .script { display: none; }
+  .hero__foot { gap: 10px; padding-bottom: 16px; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .avatar { height: min(calc(100svh - 290px), 760px); }
+}
