@@ -54,21 +54,23 @@
     lastY = y;
   }, { passive: true });
 
-  /* ---------- hero avatar: the menu bar slides down like a ceiling and presses him ---------- */
+  /* ---------- hero duck: the menu bar slides down like a ceiling and squashes it ---------- */
   const track = document.querySelector('.hero-track');
   const heroEl = document.querySelector('.hero');
   const avatar = document.querySelector('.avatar');
   const topBar = document.querySelector('.top');
-  // Top of each pose's silhouette as a share of the avatar box (measured from the keyed frames).
-  const POSE_TOP = { idle: 0.01, duck: 0.317, lie: 0.578 };
+  const duckImg = avatar.querySelector('.avatar__f');
+  const HEAD_TOP = 0.02;   // top of the duck's head as a share of its box
+  const MIN_SQUASH = 0.4;  // how flat the duck gets at the end of the press
   const lerp = (a, b, t) => a + (b - a) * t;
-  function ceilingAt(p, barH, headY) {
-    // keyframes of the slab's bottom edge: rest → touch head → push to duck → he holds it → push to lie → hold
-    const k = [[0, barH], [0.14, headY.idle], [0.3, headY.duck], [0.5, headY.duck], [0.72, headY.lie], [1, headY.lie]];
+  function ceilingAt(p, barH, headY, floorY) {
+    // slab bottom: rest → touches the head → presses down to 40 % height → holds
+    const lowest = floorY - (floorY - headY) * MIN_SQUASH;
+    const k = [[0, barH], [0.16, headY], [0.75, lowest], [1, lowest]];
     for (let i = 1; i < k.length; i++) {
       if (p <= k[i][0]) { const t = (p - k[i - 1][0]) / (k[i][0] - k[i - 1][0]); return lerp(k[i - 1][1], k[i][1], t); }
     }
-    return k[k.length - 1][1];
+    return lowest;
   }
   function setPose(pose) {
     if (avatar.dataset.pose === pose) return;
@@ -77,6 +79,10 @@
     avatar.classList.remove('is-hit', 'is-hi');
     void avatar.offsetWidth;
     if (pose !== 'idle') avatar.classList.add('is-hit');
+  }
+  function squashDuck(s) {
+    // cartoon squash: flatter and a bit wider, anchored at the feet
+    duckImg.style.transform = s >= 0.999 ? '' : `scale(${(1 + (1 - s) * 0.45).toFixed(3)}, ${s.toFixed(3)})`;
   }
   // The slab also flattens the big words it passes over (they squash toward their baseline).
   const halves = [...document.querySelectorAll('.hero__half')];
@@ -102,28 +108,28 @@
     const inTrack = trackTop <= 0 && -trackTop < room;
     const box = avatar.getBoundingClientRect();
     const barH = topBar.offsetHeight;
-    const headY = {
-      idle: box.top + box.height * POSE_TOP.idle,
-      duck: box.top + box.height * POSE_TOP.duck,
-      lie: box.top + box.height * POSE_TOP.lie,
-    };
+    const headY = box.top + box.height * HEAD_TOP, floorY = box.bottom;
     if (p > 0.01 && inTrack) {
-      const bottom = Math.max(barH, ceilingAt(p, barH, headY));
+      const bottom = Math.max(barH, ceilingAt(p, barH, headY, floorY));
       topBar.classList.remove('is-return', 'is-hidden');
       topBar.classList.add('is-press');
       topBar.style.transform = `translateY(${Math.round(bottom - barH)}px)`;
       pressing = true;
-      setPose(bottom < headY.idle + 4 ? 'idle' : bottom < headY.duck + 8 ? 'duck' : 'lie');
+      const s = Math.min(1, Math.max(MIN_SQUASH, (floorY - bottom) / (floorY - headY)));
+      squashDuck(s);
+      setPose(s > 0.995 ? 'idle' : 'press');
       squashWords(bottom);
     } else if (pressing) {
-      // leaving the hero: the slab flies back up to its place
+      // leaving the hero: the slab flies back up and the duck pops back
       pressing = false;
       topBar.classList.add('is-return');
       topBar.classList.remove('is-press');
       topBar.style.transform = '';
       squashWords(0);
-      setPose(p >= 1 ? 'lie' : 'idle');
+      squashDuck(1);
+      setPose('idle');
     } else if (p <= 0.01) {
+      squashDuck(1);
       setPose('idle');
     }
   }
@@ -133,12 +139,12 @@
   addEventListener('resize', onPressScroll);
   updatePress();
 
-  // he turns a little toward the cursor
+  // the duck leans a little toward the cursor
   const body = avatar.querySelector('.avatar__body');
   if (!reduced && matchMedia('(hover: hover)').matches) {
     heroEl.addEventListener('mousemove', (e) => {
       const x = e.clientX / innerWidth - 0.5;
-      body.style.rotate = `y ${(x * 16).toFixed(1)}deg`;
+      body.style.rotate = `${(x * 6).toFixed(1)}deg`;
     });
     heroEl.addEventListener('mouseleave', () => { body.style.rotate = ''; });
   }
@@ -156,10 +162,10 @@
   hit.addEventListener('mouseenter', sayHi);
   hit.addEventListener('click', sayHi);
 
-  /* ---------- intro face: waves on hover, smiles now and then, tilts toward the cursor ---------- */
+  /* ---------- intro duck: waves on hover or tap, card tilts toward the cursor ---------- */
   const face = document.querySelector('.face');
   let hovering = false;
-  function setFace(state) { face.dataset.face = state; }
+  const setFace = (state) => { face.dataset.face = state; };
   face.addEventListener('mouseenter', () => { hovering = true; setFace('wave'); });
   face.addEventListener('mouseleave', () => { hovering = false; setFace('idle'); face.style.transform = ''; });
   face.addEventListener('click', () => {
@@ -170,13 +176,8 @@
     face.addEventListener('mousemove', (e) => {
       const r = face.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      face.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 8}deg)`;
+      face.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`;
     });
-    setInterval(() => {
-      if (hovering || face.dataset.face !== 'idle' || document.hidden) return;
-      setFace('smile');
-      setTimeout(() => { if (!hovering) setFace('idle'); }, 1300);
-    }, 5200);
   }
 
   /* ---------- mobile: swipe carousels get dots + a "swipe" hint ---------- */

@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>pizno: сайти, застосунки та ШІ-автоматизації для малого бізнесу</title>
 <meta name="description" content="Сайти, застосунки лояльності, Telegram-боти та ШІ-асистенти для кав'ярень, магазинів, салонів і сервісів в Україні та Польщі. Безкоштовний аудит.">
-<meta name="theme-color" content="#0f3d4b">
+<meta name="theme-color" content="#f2eee4">
 <meta property="og:title" content="pizno: сайти, застосунки та ШІ-автоматизації для малого бізнесу">
 <meta property="og:description" content="Сайти, застосунки лояльності, Telegram-боти та ШІ-асистенти для кав'ярень, магазинів, салонів і сервісів в Україні та Польщі. Безкоштовний аудит.">
 <meta property="og:image" content="https://pizno.vercel.app/img/og.png">
 <meta property="og:url" content="https://pizno.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/duck-badge-512.png" type="image/png">
+<link rel="apple-touch-icon" href="img/duck-badge-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;600;700&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Onest:wght@500;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,11 +31,11 @@
 </svg>
 
 <div class="loader" aria-hidden="true">
-  <span class="loader__word">pizno<span class="script">.</span></span>
+  <span class="loader__word"><img src="img/duck-badge.webp" alt="" width="200" height="202"><img src="img/wordmark.webp" alt="" width="520" height="169"></span>
 </div>
 
 <header class="top">
-  <a class="logo" href="#top" aria-label="pizno, на початок">pizno<i>.</i></a>
+  <a class="logo" href="#top" aria-label="pizno, на початок"><img class="logo__duck" src="img/duck-badge.webp" alt="" width="200" height="202"><img class="logo__word" src="img/wordmark.webp" alt="pizno" width="520" height="169"></a>
   <nav aria-label="Категорії">
     <a class="link-line" href="#sites"><b>01</b><span data-en="Websites">Сайти</span></a>
     <a class="link-line" href="#apps"><b>02</b><span data-en="Apps">Застосунки</span></a>
@@ -61,11 +62,9 @@
         <small class="reveal" data-en="Websites · Apps">Сайти · Застосунки</small>
       </div>
       <figure class="hero__figure avatar reveal" data-pose="idle">
-        <button type="button" class="avatar__hit" aria-label="Помахати / Wave"></button>
+        <button type="button" class="avatar__hit" aria-label="Привітатися з качкою / Say hi to the duck"></button>
         <div class="avatar__squash"><div class="avatar__body">
-          <img class="avatar__f" data-p="idle" src="img/hero-idle.webp" alt="Назар, 3D-аватар у повний зріст" width="640" height="1080" fetchpriority="high">
-          <img class="avatar__f" data-p="duck" src="img/hero-duck.webp" alt="" width="640" height="1080" fetchpriority="low">
-          <img class="avatar__f" data-p="lie" src="img/hero-lie.webp" alt="" width="640" height="1080" fetchpriority="low">
+          <img class="avatar__f" src="img/duck-full.webp" alt="Качка pizno, талісман студії" width="820" height="1094" fetchpriority="high">
         </div></div>
         <span class="avatar__hi script" aria-hidden="true" data-en="hi!">привіт!</span>
         <span class="hero__note script" aria-hidden="true" data-en="scroll ↓">гортай ↓</span>
@@ -92,9 +91,7 @@
     <div class="intro">
       <div class="intro__card reveal">
         <div class="intro__mark face" data-face="idle">
-          <img class="face__f" data-f="idle" src="img/face-idle.webp" alt="Назар, анімований 3D-портрет" width="640" height="778" loading="lazy">
-          <img class="face__f" data-f="smile" src="img/face-smile.webp" alt="" width="640" height="778" loading="lazy">
-          <img class="face__f" data-f="wave" src="img/face-wave.webp" alt="" width="640" height="778" loading="lazy">
+          <img class="face__f" src="img/duck-waist.webp" alt="Качка pizno з бабл-ті" width="760" height="918" loading="lazy">
           <span class="script face__tag" data-en="hover me">наведи на мене</span>
         </div>
       </div>
@@ -141,7 +138,7 @@
   <section class="slide cat wrap" id="sites" aria-labelledby="sites-title">
     <svg class="squig" style="top:12%;right:6%;transform:rotate(12deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="cat__head">
-      <span class="cat__num">01</span>
+      <span class="cat__num">01/05</span>
       <h2 class="cat__title" id="sites-title"><span class="mask"><span data-en="Websites">Сайти</span></span><span class="script reveal" data-en="that sell">що продають</span></h2>
       <p class="cat__lead reveal" data-en="Each one has a single job: turn a visitor into a call, an order or a request in Telegram.">У кожного одне завдання: перетворити відвідувача на дзвінок, замовлення чи заявку в Telegram.</p>
     </div>
@@ -203,7 +200,7 @@
   <section class="slide cat wrap" id="apps" aria-labelledby="apps-title">
     <svg class="squig" style="top:10%;left:46%;transform:rotate(-14deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="cat__head">
-      <span class="cat__num">02</span>
+      <span class="cat__num">02/05</span>
       <h2 class="cat__title" id="apps-title"><span class="mask"><span data-en="Apps">Застосунки</span></span><span class="script reveal" data-en="right on the phone">прямо в телефоні</span></h2>
       <p class="cat__lead reveal" data-en="Installed from a link, no App Store queue. Customers come back for points, coupons and pre-orders.">Встановлюються з посилання, без черги в App Store. Клієнти повертаються за балами, купонами й передзамовленнями.</p>
     </div>
@@ -254,7 +251,7 @@
   <section class="slide cat wrap" id="bots" aria-labelledby="bots-title">
     <svg class="squig" style="bottom:8%;left:5%;transform:rotate(-10deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="cat__head">
-      <span class="cat__num">03</span>
+      <span class="cat__num">03/05</span>
       <h2 class="cat__title" id="bots-title"><span class="mask"><span data-en="Bots">Боти</span></span><span class="script reveal" data-en="for bookings in Telegram">для запису в Telegram</span></h2>
       <p class="cat__lead reveal" data-en="The client books at 23:47 and gets an answer right away. The owner just confirms.">Клієнт записується о 23:47 і одразу отримує відповідь. Власнику лишається тільки підтвердити.</p>
     </div>
@@ -312,7 +309,7 @@
   <section class="slide cat wrap" id="ai" aria-labelledby="ai-title">
     <svg class="squig" style="top:12%;right:8%;transform:rotate(8deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="cat__head">
-      <span class="cat__num">04</span>
+      <span class="cat__num">04/05</span>
       <h2 class="cat__title" id="ai-title"><span class="mask"><span data-en="AI">ШІ</span></span><span class="script reveal" data-en="instead of manual work">замість ручної роботи</span></h2>
       <p class="cat__lead reveal" data-en="What a person now does by hand every day can be handed to a system. Here is what I already put in place.">Те, що зараз робить людина вручну щодня, можна віддати системі. Ось що я вже впроваджую.</p>
     </div>
@@ -387,6 +384,7 @@
     <svg class="squig" style="top:16%;left:10%;transform:rotate(-18deg)" aria-hidden="true"><use href="#squig"/></svg>
     <svg class="squig" style="top:30%;right:9%;transform:rotate(20deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="wrap">
+      <img class="thanks__duck reveal" src="img/duck-badge.webp" alt="" width="200" height="202" loading="lazy">
       <h2 class="thanks__big" id="thanks-title"><span class="mask"><span data-en="Thank you">Дякую</span></span><span class="script reveal" data-en="for your attention">за увагу</span></h2>
       <p class="thanks__sub reveal" data-en="Tell me about your business. I'll show you where you're losing customers and what can be automated. Message &quot;AUDIT&quot; on Telegram.">Розкажіть про свій бізнес. Покажу, де ви втрачаєте клієнтів і що можна автоматизувати. Напишіть «АУДИТ» у Telegram.</p>
       <div class="thanks__cta reveal">
