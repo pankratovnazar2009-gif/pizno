@@ -512,3 +512,8 @@ html, body { overflow-x: clip; }                       /* the tilted tape must n
   .hero__half--r small { margin-left: 0; }
 }
 .bot .proj__name { font-size: clamp(1.15rem, 1.7vw, 1.6rem); overflow-wrap: anywhere; }
+/* the longest section word («ЗАСТОСУНКИ», Unbounded) must fit its column */
+.cat__title { grid-column: 1 / span 8; font-size: clamp(2.4rem, 5.6vw, 5.8rem); }
+.cat__lead { grid-column: 9 / span 4; }
+@media (max-width: 900px) { .cat__title, .cat__lead { grid-column: 1 / -1; } }
+@media (max-width: 760px) { .cat__title { font-size: clamp(1.9rem, 9.4vw, 3.2rem); } }
