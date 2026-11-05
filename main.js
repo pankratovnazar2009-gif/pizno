@@ -47,138 +47,68 @@
   const top = document.querySelector('.top');
   let lastY = 0;
   addEventListener('scroll', () => {
-    if (pressing) return;
     const y = scrollY;
     top.classList.toggle('is-solid', y > 40);
     top.classList.toggle('is-hidden', y > 400 && y > lastY);
     lastY = y;
   }, { passive: true });
 
-  /* ---------- hero duck: the menu bar slides down like a ceiling and squashes it ---------- */
-  const track = document.querySelector('.hero-track');
+  /* ---------- hero duck: stands still, sways on its own floor, hops and talks when poked ---------- */
   const heroEl = document.querySelector('.hero');
   const avatar = document.querySelector('.avatar');
-  const topBar = document.querySelector('.top');
-  const duckImg = avatar.querySelector('.avatar__f');
-  const HEAD_TOP = 0.02;   // top of the duck's head as a share of its box
-  const MIN_SQUASH = 0.4;  // how flat the duck gets at the end of the press
-  const lerp = (a, b, t) => a + (b - a) * t;
-  function ceilingAt(p, barH, headY, floorY) {
-    // slab bottom: rest → touches the head → presses down to 40 % height → holds
-    const lowest = floorY - (floorY - headY) * MIN_SQUASH;
-    const k = [[0, barH], [0.16, headY], [0.75, lowest], [1, lowest]];
-    for (let i = 1; i < k.length; i++) {
-      if (p <= k[i][0]) { const t = (p - k[i - 1][0]) / (k[i][0] - k[i - 1][0]); return lerp(k[i - 1][1], k[i][1], t); }
-    }
-    return lowest;
-  }
-  function setPose(pose) {
-    if (avatar.dataset.pose === pose) return;
-    avatar.dataset.pose = pose;
-    heroEl.dataset.pose = pose;
-    avatar.classList.remove('is-hit', 'is-hi');
-    void avatar.offsetWidth;
-    if (pose !== 'idle') avatar.classList.add('is-hit');
-  }
-  function squashDuck(s) {
-    // cartoon squash: flatter and a bit wider, anchored at the feet
-    duckImg.style.transform = s >= 0.999 ? '' : `scale(${(1 + (1 - s) * 0.45).toFixed(3)}, ${s.toFixed(3)})`;
-  }
-  // The slab also flattens the big words it passes over (they squash toward their baseline).
-  const halves = [...document.querySelectorAll('.hero__half')];
-  function squashWords(slabBottom) {
-    halves.forEach((h) => {
-      const top = h.offsetTop + heroEl.getBoundingClientRect().top + h.parentElement.offsetTop;
-      const bottom = top + h.offsetHeight;
-      const MIN = 0.16;
-      if (slabBottom <= top) { h.style.transform = ''; return; }
-      const raw = (bottom - slabBottom) / h.offsetHeight;
-      // fully flattened words stick to the underside of the slab and ride down with it
-      const dy = raw < MIN ? slabBottom - (bottom - MIN * h.offsetHeight) : 0;
-      h.style.transform = `translateY(${dy.toFixed(1)}px) scaleY(${Math.max(MIN, raw).toFixed(3)})`;
-    });
-  }
-
-  let pressing = false;
-  function updatePress() {
-    if (reduced) return;
-    const room = track.offsetHeight - innerHeight;
-    const trackTop = track.getBoundingClientRect().top;
-    const p = room > 0 ? Math.min(1, Math.max(0, -trackTop / room)) : 0;
-    const inTrack = trackTop <= 0 && -trackTop < room;
-    const box = avatar.getBoundingClientRect();
-    const barH = topBar.offsetHeight;
-    const headY = box.top + box.height * HEAD_TOP, floorY = box.bottom;
-    if (p > 0.01 && inTrack) {
-      const bottom = Math.max(barH, ceilingAt(p, barH, headY, floorY));
-      topBar.classList.remove('is-return', 'is-hidden');
-      topBar.classList.add('is-press');
-      topBar.style.transform = `translateY(${Math.round(bottom - barH)}px)`;
-      pressing = true;
-      const s = Math.min(1, Math.max(MIN_SQUASH, (floorY - bottom) / (floorY - headY)));
-      squashDuck(s);
-      setPose(s > 0.995 ? 'idle' : 'press');
-      squashWords(bottom);
-    } else if (pressing) {
-      // leaving the hero: the slab flies back up and the duck pops back
-      pressing = false;
-      topBar.classList.add('is-return');
-      topBar.classList.remove('is-press');
-      topBar.style.transform = '';
-      squashWords(0);
-      squashDuck(1);
-      setPose('idle');
-    } else if (p <= 0.01) {
-      squashDuck(1);
-      setPose('idle');
-    }
-  }
-  let ticking = false;
-  const onPressScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; updatePress(); }); } };
-  addEventListener('scroll', onPressScroll, { passive: true });
-  addEventListener('resize', onPressScroll);
-  updatePress();
-
-  // the duck leans a little toward the cursor
   const body = avatar.querySelector('.avatar__body');
+  const bubble = avatar.querySelector('.avatar__hi');
+  const LINES = {
+    uk: ['привіт!', 'бабл-ті?', 'кря!', 'пиши «АУДИТ»', 'автоматизую!', 'ще раз?'],
+    en: ['hi!', 'boba?', 'quack!', 'type “AUDIT”', 'I automate!', 'again?'],
+  };
+  let line = 0, hiTimer;
+  function poke() {
+    const list = LINES[root.lang === 'en' ? 'en' : 'uk'];
+    bubble.textContent = list[line % list.length];
+    line++;
+    avatar.classList.remove('is-hi');
+    void avatar.offsetWidth; // restart the hop
+    avatar.classList.add('is-hi');
+    clearTimeout(hiTimer);
+    hiTimer = setTimeout(() => { avatar.classList.remove('is-hi'); bubble.textContent = ''; }, 1800);
+  }
+  avatar.querySelector('.avatar__hit').addEventListener('click', poke);
+
+  // the duck leans toward the cursor; its floor stays put
   if (!reduced && matchMedia('(hover: hover)').matches) {
     heroEl.addEventListener('mousemove', (e) => {
       const x = e.clientX / innerWidth - 0.5;
-      body.style.rotate = `${(x * 6).toFixed(1)}deg`;
+      body.style.rotate = `${(x * 7).toFixed(1)}deg`;
     });
     heroEl.addEventListener('mouseleave', () => { body.style.rotate = ''; });
   }
 
-  let hiTimer;
-  function sayHi() {
-    if (avatar.dataset.pose !== 'idle') return;
-    avatar.classList.remove('is-hi');
-    void avatar.offsetWidth; // restart the hop animation
-    avatar.classList.add('is-hi');
-    clearTimeout(hiTimer);
-    hiTimer = setTimeout(() => avatar.classList.remove('is-hi'), 1800);
-  }
-  const hit = avatar.querySelector('.avatar__hit');
-  hit.addEventListener('mouseenter', sayHi);
-  hit.addEventListener('click', sayHi);
-
-  /* ---------- intro duck: waves on hover or tap, card tilts toward the cursor ---------- */
+  /* ---------- intro duck: sticks its tongue out on hover or tap ---------- */
   const face = document.querySelector('.face');
   let hovering = false;
   const setFace = (state) => { face.dataset.face = state; };
-  face.addEventListener('mouseenter', () => { hovering = true; setFace('wave'); });
-  face.addEventListener('mouseleave', () => { hovering = false; setFace('idle'); face.style.transform = ''; });
+  face.addEventListener('mouseenter', () => { hovering = true; setFace('tongue'); });
+  face.addEventListener('mouseleave', () => { hovering = false; setFace('idle'); });
   face.addEventListener('click', () => {
-    setFace('wave');
-    setTimeout(() => { if (!hovering) setFace('idle'); }, 1600);
+    setFace('tongue');
+    setTimeout(() => { if (!hovering) setFace('idle'); }, 1400);
   });
-  if (!reduced) {
-    face.addEventListener('mousemove', (e) => {
-      const r = face.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      face.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`;
-    });
+
+  /* ---------- thanks duck: grabs the shades and lifts them ---------- */
+  const shades = document.querySelector('.shades');
+  let shadeTimers = [];
+  const clearShades = () => { shadeTimers.forEach(clearTimeout); shadeTimers = []; };
+  function liftShades(hold) {
+    clearShades();
+    shades.dataset.shades = 'grab';
+    shadeTimers.push(setTimeout(() => { shades.dataset.shades = 'lift'; }, 260));
+    if (hold) shadeTimers.push(setTimeout(() => { shades.dataset.shades = 'idle'; }, 2200));
   }
+  shades.addEventListener('mouseenter', () => liftShades(false));
+  shades.addEventListener('mouseleave', () => { clearShades(); shades.dataset.shades = 'idle'; });
+  shades.addEventListener('click', () => liftShades(true));
+  shades.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); liftShades(true); } });
 
   /* ---------- mobile: swipe carousels get dots + a "swipe" hint ---------- */
   document.querySelectorAll('[data-swipe]').forEach((rail) => {
@@ -207,7 +137,7 @@
   const tabs = [...tabbar.querySelectorAll('[data-tab]')];
   const sections = tabs.map((t) => document.getElementById(t.dataset.tab));
   function syncTabs() {
-    tabbar.classList.toggle('is-on', scrollY > track.offsetHeight - innerHeight * 0.4);
+    tabbar.classList.toggle('is-on', scrollY > heroEl.offsetHeight - innerHeight * 0.4);
     const mid = innerHeight * 0.45;
     let active = null;
     sections.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top < mid && r.bottom > mid) active = tabs[i]; });
@@ -241,6 +171,7 @@
       hero.querySelectorAll('.reveal').forEach((r) => r.classList.add('is-in'));
       avatar.classList.add('is-drop');
       setTimeout(() => avatar.classList.remove('is-drop'), 1100);
+      setTimeout(poke, reduced ? 0 : 1000); // says hi once after landing
     }, reduced ? 0 : 260);
     setTimeout(() => loader.remove(), 1100);
     startLenis();

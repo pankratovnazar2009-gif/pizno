@@ -54,7 +54,6 @@
 <main id="top">
 
   <!-- HERO: big split word with a figure in the middle (ref 1) -->
-  <div class="hero-track">
   <section class="slide hero" aria-label="Портфоліо">
     <svg class="squig squig--a" aria-hidden="true"><use href="#squig"/></svg>
     <svg class="squig squig--b" aria-hidden="true"><use href="#squig"/></svg>
@@ -63,13 +62,14 @@
         <span class="mask hero__word"><span data-en="Port">Порт</span></span>
         <small class="reveal" data-en="Websites · Apps">Сайти · Застосунки</small>
       </div>
-      <figure class="hero__figure avatar reveal" data-pose="idle">
-        <button type="button" class="avatar__hit" aria-label="Привітатися з качкою / Say hi to the duck"></button>
+      <figure class="hero__figure avatar reveal">
+        <img class="avatar__floor" src="img/duck-floor.webp" alt="" width="820" height="1094">
+        <button type="button" class="avatar__hit" aria-label="Тицьни качку / Poke the duck"></button>
         <div class="avatar__squash"><div class="avatar__body">
           <img class="avatar__f" src="img/duck-full.webp" alt="Качка pizno, талісман студії" width="820" height="1094" fetchpriority="high">
         </div></div>
-        <span class="avatar__hi script" aria-hidden="true" data-en="hi!">привіт!</span>
-        <span class="hero__note script" aria-hidden="true" data-en="scroll ↓">гортай ↓</span>
+        <span class="avatar__hi script" aria-live="polite"></span>
+        <span class="hero__note script" aria-hidden="true" data-en="poke me ↑">тицьни мене ↑</span>
       </figure>
       <div class="hero__half hero__half--r">
         <span class="mask hero__word"><span data-en="folio">фоліо</span></span>
@@ -81,7 +81,6 @@
       <a class="btn btn--accent reveal" href="https://t.me/Pa9krat" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg><span data-en="Free audit on Telegram">Безкоштовний аудит у Telegram</span></a>
     </div>
   </section>
-  </div>
 
   <div class="tape" aria-hidden="true"><div class="tape__run">
     <span data-en="Websites">Сайти</span><i>✦</i><span data-en="Apps">Застосунки</span><i>✦</i><span data-en="Telegram bots">Telegram-боти</span><i>✦</i><span data-en="Requests to Telegram">Заявки в Telegram</span><i>✦</i><span data-en="AI assistants">ШІ-асистенти</span><i>✦</i><span data-en="Automation">Автоматизації</span><i>✦</i>
@@ -93,7 +92,8 @@
     <div class="intro">
       <div class="intro__card reveal">
         <div class="intro__mark face" data-face="idle">
-          <img class="face__f" src="img/duck-waist.webp" alt="Качка pizno з бабл-ті" width="760" height="918" loading="lazy">
+          <img class="face__f" data-f="idle" src="img/duck-waist.webp" alt="Качка pizno з бабл-ті" width="760" height="900" loading="lazy">
+          <img class="face__f" data-f="tongue" src="img/duck-tongue.webp" alt="" width="760" height="900" loading="lazy">
           <span class="script face__tag" data-en="hover me">наведи на мене</span>
         </div>
       </div>
@@ -386,7 +386,11 @@
     <svg class="squig" style="top:16%;left:10%;transform:rotate(-18deg)" aria-hidden="true"><use href="#squig"/></svg>
     <svg class="squig" style="top:30%;right:9%;transform:rotate(20deg)" aria-hidden="true"><use href="#squig"/></svg>
     <div class="wrap">
-      <img class="thanks__duck reveal" src="img/duck-badge.webp" alt="" width="200" height="202" loading="lazy">
+      <figure class="thanks__duck shades reveal" data-shades="idle" tabindex="0" aria-label="Качка знімає окуляри / The duck lifts its shades">
+        <img data-s="idle" src="img/duck-bust.webp" alt="" width="460" height="500" loading="lazy">
+        <img data-s="grab" src="img/duck-grab.webp" alt="" width="460" height="500" loading="lazy">
+        <img data-s="lift" src="img/duck-lift.webp" alt="" width="460" height="500" loading="lazy">
+      </figure>
       <h2 class="thanks__big" id="thanks-title"><span class="mask"><span data-en="Thank you">Дякую</span></span><span class="script reveal" data-en="for your attention">за увагу</span></h2>
       <p class="thanks__sub reveal" data-en="Tell me about your business. I'll show you where you're losing customers and what can be automated. Message &quot;AUDIT&quot; on Telegram.">Розкажіть про свій бізнес. Покажу, де ви втрачаєте клієнтів і що можна автоматизувати. Напишіть «АУДИТ» у Telegram.</p>
       <div class="thanks__cta reveal">

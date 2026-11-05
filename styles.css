@@ -517,3 +517,33 @@ html, body { overflow-x: clip; }                       /* the tilted tape must n
 .cat__lead { grid-column: 9 / span 4; }
 @media (max-width: 900px) { .cat__title, .cat__lead { grid-column: 1 / -1; } }
 @media (max-width: 760px) { .cat__title { font-size: clamp(1.9rem, 9.4vw, 3.2rem); } }
+
+/* ================= v3: static hero, separate floor, new duck frames ================= */
+.hero-track { height: auto; }
+.hero { min-height: 100svh; height: auto; }
+.avatar__floor { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom; pointer-events: none; user-select: none; }
+.avatar__squash { z-index: 1; }
+.avatar .avatar__body { animation: sway 3.2s ease-in-out infinite; }
+.avatar.is-hi .avatar__squash { animation: hop 0.6s var(--spring); }
+@keyframes hop { 0% { transform: none; } 35% { transform: translateY(-7%) scale(0.97, 1.04); } 70% { transform: translateY(0) scale(1.05, 0.95); } 100% { transform: none; } }
+.avatar__hi:empty { display: none; }
+.avatar.is-hi .hero__note { opacity: 0; }
+.hero__note { bottom: 46%; }
+
+/* intro: tongue on hover */
+.face .face__f { opacity: 0; transition: opacity 0.12s; }
+.face[data-face="idle"] [data-f="idle"], .face[data-face="tongue"] [data-f="tongue"] { opacity: 1; }
+.face[data-face="tongue"] .face__f { animation: none; }
+.face[data-face="tongue"] .face__tag { opacity: 0; }
+.face[data-face="tongue"] { transform: rotate(-1.5deg) scale(1.02); }
+
+/* thanks: shades lift */
+.shades { position: relative; width: clamp(200px, 22vw, 290px); aspect-ratio: 460 / 500; margin: 0 auto 6px; cursor: pointer; outline-offset: 6px; }
+.shades img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.1s; user-select: none; pointer-events: none; }
+.shades[data-shades="idle"] [data-s="idle"], .shades[data-shades="grab"] [data-s="grab"], .shades[data-shades="lift"] [data-s="lift"] { opacity: 1; }
+.shades[data-shades="lift"] { animation: pop 0.35s var(--spring); }
+@keyframes pop { 0% { transform: scale(0.96); } 100% { transform: none; } }
+@media (max-width: 760px) {
+  .hero__note { left: 70%; bottom: 52%; }
+}
+@media (prefers-reduced-motion: reduce) { .avatar .avatar__body { animation: none; } }
