@@ -537,12 +537,6 @@ html, body { overflow-x: clip; }                       /* the tilted tape must n
 .face[data-face="tongue"] .face__tag { opacity: 0; }
 .face[data-face="tongue"] { transform: rotate(-1.5deg) scale(1.02); }
 
-/* thanks: shades lift */
-.shades { position: relative; width: clamp(200px, 22vw, 290px); aspect-ratio: 460 / 500; margin: 0 auto 6px; cursor: pointer; outline-offset: 6px; }
-.shades img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.1s; user-select: none; pointer-events: none; }
-.shades[data-shades="idle"] [data-s="idle"], .shades[data-shades="grab"] [data-s="grab"], .shades[data-shades="lift"] [data-s="lift"] { opacity: 1; }
-.shades[data-shades="lift"] { animation: pop 0.35s var(--spring); }
-@keyframes pop { 0% { transform: scale(0.96); } 100% { transform: none; } }
 @media (max-width: 760px) {
   .hero__note { left: 70%; bottom: 52%; }
 }

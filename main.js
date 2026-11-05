@@ -95,21 +95,6 @@
     setTimeout(() => { if (!hovering) setFace('idle'); }, 1400);
   });
 
-  /* ---------- thanks duck: grabs the shades and lifts them ---------- */
-  const shades = document.querySelector('.shades');
-  let shadeTimers = [];
-  const clearShades = () => { shadeTimers.forEach(clearTimeout); shadeTimers = []; };
-  function liftShades(hold) {
-    clearShades();
-    shades.dataset.shades = 'grab';
-    shadeTimers.push(setTimeout(() => { shades.dataset.shades = 'lift'; }, 260));
-    if (hold) shadeTimers.push(setTimeout(() => { shades.dataset.shades = 'idle'; }, 2200));
-  }
-  shades.addEventListener('mouseenter', () => liftShades(false));
-  shades.addEventListener('mouseleave', () => { clearShades(); shades.dataset.shades = 'idle'; });
-  shades.addEventListener('click', () => liftShades(true));
-  shades.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); liftShades(true); } });
-
   /* ---------- mobile: swipe carousels get dots + a "swipe" hint ---------- */
   document.querySelectorAll('[data-swipe]').forEach((rail) => {
     const items = [...rail.children];
